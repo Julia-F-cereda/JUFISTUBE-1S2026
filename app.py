@@ -1,5 +1,7 @@
 from flask import Flask, render_template
 import mysql.connector
+from model.musica import recuperar_musicas
+from model.genero import recuperar_generos
 
 app = Flask(__name__)
 
@@ -7,32 +9,19 @@ app = Flask(__name__)
 @app.route("/")
 def pg_principal():
 
-    #conectando no bd
-    conexao = mysql.connector.connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        password= "root",
-        database= "jufisTube"
-    )
-    #criando cursor
-    cursor = conexao.cursor(dictionary=True)
+    musicas = recuperar_musicas()
+    generos = recuperar_generos()
 
-    #executando a consulta       
-    cursor.execute("SELECT codigo, cantor, duracao, nome, url_imagem, nome_genero FROM musica") 
-
-    musicas = cursor.fetchall()                                                                                                                       
-
-    #fechando a conexao
-    conexao.close()
 
 
     return render_template("principal.html", musicas = musicas)
 
 
-@app.route("/administracao")
+@app.route("/admin")
 def pg_administracao():
-    return render_template("administracao.html")
+    musicas = recuperar_musicas()
+    generos = recuperar_generos()
+    return render_template("administracao.html", musicas = musicas, generos = generos)
 
 
 if __name__ == "__main__":

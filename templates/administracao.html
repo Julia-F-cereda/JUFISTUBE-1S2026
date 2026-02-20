@@ -52,13 +52,13 @@
             <h2 class="title is-5 mb-5">
                 <i class="fa-solid fa-circle-plus has-text-success mr-2"></i> Nova Música
             </h2>
-            <form>
+            <form action="/musica/post" method="post">
                 <div class="columns is-multiline">
                     <div class="column is-4">
                         <div class="field">
                             <label class="label is-small">Título da Música</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Ex: Starboy">
+                                <input name="input-nome" type="text" placeholder="Ex: Starboy">
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                         <div class="field">
                             <label class="label is-small">Cantor / Banda</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Ex: The Weeknd">
+                                <input name="input-cantor" type="text" placeholder="Ex: The Weeknd">
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                         <div class="field">
                             <label class="label is-small">Duração</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="Ex: 03:50">
+                                <input name="input-duracao" type="text" placeholder="Ex: 03:50">
                             </div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                         <div class="field">
                             <label class="label is-small">URL da Imagem de Capa</label>
                             <div class="control">
-                                <input class="input" type="text" placeholder="https://...">
+                                <input name="input-imagem" type="text" placeholder="https://...">
                             </div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                          
                                         <option>Selecione...</option>
                                         {% for genero in generos%}
-                                        <option>{{genero.nome_genero}}</option>
+                                        <option value="{{genero.nome_genero}}">{{genero.nome_genero}}</option>
                                         {%endfor%}
                                     </select>
                                 
@@ -105,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="button is-link is-fullwidth mt-4">
+                <button type="submit" class="button is-link is-fullwidth mt-4">
                     <strong><i class="fa-solid fa-save mr-2"></i> Salvar Música</strong>
                 </button>
             </form>

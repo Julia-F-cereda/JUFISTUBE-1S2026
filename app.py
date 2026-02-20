@@ -1,7 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 import mysql.connector
 from model.musica import recuperar_musicas
 from model.genero import recuperar_generos
+from model.musica import salvar_musica
+
 
 app = Flask(__name__)
 
@@ -14,7 +16,7 @@ def pg_principal():
 
 
 
-    return render_template("principal.html", musicas = musicas)
+    return render_template("principal.html", musicas = musicas, generos = generos)
 
 
 @app.route("/admin")
@@ -23,6 +25,25 @@ def pg_administracao():
     generos = recuperar_generos()
     return render_template("administracao.html", musicas = musicas, generos = generos)
 
+@app.route("/musica/post", methods=["POST"])
+def api_inserir_musica():
+    nome_musica = request.form.get("input-nome")
+    cantor = request.form.get("input-cantor")
+    genero = request.form.get("input-genero")
+    duracao = request.form.get("input-duracao")
+    imagem = request.form.get("input-imagem")
+    try:
+        if salvar_musica(cantor, duracao, nome_musica, imagem, genero):
+            return redirect("/admin")
+        else: return "erro"
+    except Exception as erro:
+        print(erro)
+    
+
+
+
+    
+ 
 
 if __name__ == "__main__":
     app.run(debug=True)

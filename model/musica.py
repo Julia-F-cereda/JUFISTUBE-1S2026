@@ -32,3 +32,16 @@ def salvar_musica( cantor: str, duracao: str, nome: str,  imagem: str, genero: s
     except Exception as erro:
         print(erro)
         return False
+    
+# def excluir_musica():
+#     """essa função precisa apagardados"""
+#     conexao, cursor = conectar()
+
+#     cursor.execute("""DELETE FROM musica (cantor, duracao, nome, url_imagem, nome_genero) 
+#                     where codigo= (&s)""")
+
+#     conexao.commit()
+
+      
+#     conexao.close()
+

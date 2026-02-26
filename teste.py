@@ -1,3 +1,6 @@
 from model.musica import salvar_musica
+from model.musica import excluir_musica
+from model.musica import ativar_musica
 
-salvar_musica("lanarey", "00:02:50", "bad girl", "", "POP")
+ativar_musica(True, 5)
+

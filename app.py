@@ -10,9 +10,9 @@ app = Flask(__name__)
 
 @app.route("/home", methods=["GET"])
 @app.route("/")
-def pg_principal():
 
-    musicas = recuperar_musicas()
+def pg_principal():
+    musicas = recuperar_musicas(True)
     generos = recuperar_generos()
 
 
@@ -53,6 +53,11 @@ def api_ativar_musica( id,ativo):
         return redirect("/admin")
     else:
         return "erro"
+    
+@app.route("/login")
+def api_login():
+    return render_template("login.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

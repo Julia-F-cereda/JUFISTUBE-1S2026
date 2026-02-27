@@ -11,8 +11,8 @@ Este projeto foi desenvolvido com o objetivo de praticar a criação de rotas e 
 
 <h3>COMO EXECUTAR</h3>
 <P>1. Baixe os arquivos do projeto.</P>
-<P>2. Abra o arquivo `index.html`.</P>
-<P>3. Execute utilizando a extensão Live Server no VS Code.</P>
+<P>2. Abra o arquivo e na pasta database copie esses arquivos, insira em seu workbanch e execute.</P>
+<P>3. Vá até o arquivo app.py e clique em rodar, entre no link enviado pelo terminal.</P>
 
 <h3>FUNCIONALIDADES DO PROJETO</h3>
 <p>Criação e gerenciamento de rotas.</p>

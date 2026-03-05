@@ -5,6 +5,7 @@ from model.genero import recuperar_generos
 from model.musica import salvar_musica
 from model.musica import excluir_musica
 from model.musica import ativar_musica
+from model.cadastro import inserir_usuario
 
 app = Flask(__name__)
 
@@ -54,9 +55,26 @@ def api_ativar_musica( id,ativo):
     else:
         return "erro"
     
+@app.route("/cadastro")
+def pg_cadastro():
+    return render_template("cadastro.html")
+
+@app.route("/cadastro", methods=["POST"])
+def rota_cadastro():
+    nome = request.form.get("nome")
+    senha = request.form.get("senha")
+    try:
+        if inserir_usuario(nome, senha):
+            return redirect("/cadastro")
+        else:
+            pass
+    except Exception as erro:
+        print (erro)
+        
 @app.route("/login")
-def api_login():
+def pg_login():
     return render_template("login.html")
+    
 
 
 if __name__ == "__main__":

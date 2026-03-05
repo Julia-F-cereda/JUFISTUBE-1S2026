@@ -18,3 +18,9 @@ CREATE TABLE IF NOT EXISTS musica (
  ativo bool default 0,
  CONSTRAINT FK_musica_genero foreign key (nome_genero) REFERENCES genero (nome_genero)
 );
+
+CREATE TABLE IF NOT EXISTS cadastro (
+nome varchar(50)NOT NULL PRIMARY KEY,
+senha varchar(100) NOT NULL
+);
+

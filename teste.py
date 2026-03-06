@@ -1,6 +1,8 @@
 from model.musica import salvar_musica
 from model.musica import excluir_musica
 from model.musica import ativar_musica
+from model.cadastro import conferir_usuario
 
-ativar_musica(True, 5)
+conferir = conferir_usuario("godo", "123")
+print(conferir)
 

@@ -6,6 +6,7 @@ from model.musica import salvar_musica
 from model.musica import excluir_musica
 from model.musica import ativar_musica
 from model.cadastro import inserir_usuario
+from model.cadastro import conferir_usuario
 
 app = Flask(__name__)
 
@@ -71,9 +72,15 @@ def rota_cadastro():
     except Exception as erro:
         print (erro)
         
-@app.route("/login")
-def pg_login():
-    return render_template("login.html")
+@app.route("/login", methods=["POST"])
+def rota_login():
+    nome = request.form.get("nome")
+    senha = request.form.get("senha")
+    usuario = conferir_usuario(nome, senha)
+    if usuario:
+        return redirect("/admin")
+    else:
+        return redirect("/login")
     
 
 
